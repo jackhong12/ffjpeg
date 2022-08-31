@@ -3,7 +3,7 @@
 
 CC      = gcc
 AR      = ar
-CCFLAGS = -Wall
+CCFLAGS = -Wall -m32 -Wall -g -fsanitize=address
 
 OBJS = \
     color.o   \
@@ -24,6 +24,9 @@ $(LIB) : $(OBJS)
 	$(AR) rcs $@ $(OBJS)
 
 %.o : %.c %.h stdefine.h
+	$(CC) $(CCFLAGS) -o $@ $< -c
+
+%.o : %.c stdefine.h
 	$(CC) $(CCFLAGS) -o $@ $< -c
 
 $(PROG) : $(PROG).o $(LIB)
