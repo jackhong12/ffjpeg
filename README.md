@@ -10,3 +10,8 @@ sudo apt-get install gcc-multilib
 ```bash
 make
 ```
+
+## Trigger CVE
+```bash
+./src/ffjpeg -e poc
+```
